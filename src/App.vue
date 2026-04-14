@@ -58,6 +58,18 @@ const toggleSidebar = () => {
           <i class="icon">📦</i>
           <span class="label">JS 閉包</span>
         </RouterLink>
+        <RouterLink to="/communication" class="sidebar-item">
+          <i class="icon">💬</i>
+          <span class="label">組件通信</span>
+        </RouterLink>
+        <RouterLink to="/advanced-communication" class="sidebar-item">
+          <i class="icon">🛰️</i>
+          <span class="label">進階組件通信</span>
+        </RouterLink>
+        <RouterLink to="/global-communication" class="sidebar-item">
+          <i class="icon">🌐</i>
+          <span class="label">全域與隔代通信</span>
+        </RouterLink>
       </nav>
     </aside>
 

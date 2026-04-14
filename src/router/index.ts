@@ -27,6 +27,21 @@ const router = createRouter({
       name: 'closure',
       component: () => import('../views/ClosureView.vue'),
     },
+    {
+      path: '/communication',
+      name: 'communication',
+      component: () => import('../views/CommunicationView.vue'),
+    },
+    {
+      path: '/advanced-communication',
+      name: 'advanced-communication',
+      component: () => import('../views/AdvancedCommunicationView.vue'),
+    },
+    {
+      path: '/global-communication',
+      name: 'global-communication',
+      component: () => import('../views/GlobalCommunicationView.vue'),
+    },
   ],
 })
 

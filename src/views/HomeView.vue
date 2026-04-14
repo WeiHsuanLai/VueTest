@@ -1,3 +1,4 @@
+<!-- 路徑: src/views/HomeView.vue | 功能: 專案首頁，提供 Vue 練習專案的基礎介紹與進度說明 -->
 <template>
   <div class="home-simple">
     <h1>Vue 練習專案首頁</h1>

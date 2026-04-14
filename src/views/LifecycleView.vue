@@ -1,3 +1,4 @@
+<!-- 路徑: src/views/LifecycleView.vue | 功能: 介紹 Vue 3 生命週期掛鉤 (Lifecycle Hooks)，包含每個階段的用法詳解與即時紀錄測試 -->
 <script setup lang="ts">
 import {
   onBeforeMount,

@@ -1,3 +1,4 @@
+<!-- 路徑: src/views/ClosureView.vue | 功能: 解析 JavaScript 閉包 (Closure) 的概念，並示範純 JS 閉包如何與 Vue 響應式橋接以更新 UI -->
 <script setup lang="ts">
 import { ref } from 'vue'
 

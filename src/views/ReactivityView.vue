@@ -1,3 +1,4 @@
+<!-- 路徑: src/views/ReactivityView.vue | 功能: 解析響應式 API (ref vs reactive)，並示範 reactive 重新賦值導致響應性失效的常見陷阱 -->
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 
