@@ -17,6 +17,11 @@ const router = createRouter({
       name: 'lifecycle',
       component: () => import('../views/LifecycleView.vue'),
     },
+    {
+      path: '/reactivity',
+      name: 'reactivity',
+      component: () => import('../views/ReactivityView.vue'),
+    },
   ],
 })
 

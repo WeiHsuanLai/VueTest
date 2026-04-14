@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { 
-  onBeforeMount, 
-  onMounted, 
-  onBeforeUpdate, 
-  onUpdated, 
-  onBeforeUnmount, 
+import {
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
   onUnmounted,
-  ref 
+  ref,
 } from 'vue'
 
 const count = ref(0)
@@ -16,97 +16,124 @@ const logs = ref<string[]>([])
 const addLog = (hook: string, updateUi = true) => {
   const time = new Date().toLocaleTimeString()
   const message = `[${time}] 觸發 ${hook}`
-  
+
   if (updateUi) {
     logs.value.unshift(message)
   }
   console.log(`%c[Vue Lifecycle]%c ${hook}`, 'color: #42b883; font-weight: bold', '')
 }
 
-onBeforeMount(() => addLog('onBeforeMount (組件掛載前：已完成數據初始化，尚未建立 DOM)'))
-onMounted(() => addLog('onMounted (組件掛載後：DOM 已建立，可進行 DOM 操作)'))
-onBeforeUpdate(() => addLog('onBeforeUpdate (數據更新前：數據已變更，DOM 尚未渲染)', false))
-onUpdated(() => addLog('onUpdated (數據更新後：DOM 已完成更新)', false))
-onBeforeUnmount(() => addLog('onBeforeUnmount (組件卸載前：適合清理計時器或監聽器)'))
-onUnmounted(() => addLog('onUnmounted (組件卸載後：組件已完全移除)'))
+onBeforeMount(() => addLog('onBeforeMount (掛載前)'))
+onMounted(() => addLog('onMounted (掛載後)'))
+onBeforeUpdate(() => addLog('onBeforeUpdate (更新前)', false))
+onUpdated(() => addLog('onUpdated (更新後)', false))
+onBeforeUnmount(() => addLog('onBeforeUnmount (卸載前)'))
+onUnmounted(() => addLog('onUnmounted (卸載後)'))
 </script>
 
 <template>
   <div class="lifecycle-view">
     <h1 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-emerald-500 pb-2">
-      Vue 3 生命週期詳解
+      Vue 3 生命週期：深度解析
     </h1>
 
-    <!-- 系統化解釋區塊 -->
-    <section class="mb-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
-      <div class="p-4 bg-blue-50 border border-blue-100 rounded-lg">
-        <h3 class="font-bold text-blue-800 mb-2">1. 建立期 (Creation)</h3>
-        <p class="text-sm text-blue-700">
-          在 <code>setup()</code> 階段。此時組件實例剛被建立，屬性已綁定，但尚未開始渲染。
-        </p>
-      </div>
-      <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-lg">
-        <h3 class="font-bold text-emerald-800 mb-2">2. 掛載期 (Mounting)</h3>
-        <p class="text-sm text-emerald-700">
-          包含 <code>onBeforeMount</code> 與 <code>onMounted</code>。將組件掛載到實際的 HTML DOM 中。
-        </p>
-      </div>
-      <div class="p-4 bg-amber-50 border border-amber-100 rounded-lg">
-        <h3 class="font-bold text-amber-800 mb-2">3. 更新期 (Updating)</h3>
-        <p class="text-sm text-amber-700">
-          包含 <code>onBeforeUpdate</code> 與 <code>onUpdated</code>。當響應式數據改變，畫面需要重新渲染時觸發。
-        </p>
-      </div>
-      <div class="p-4 bg-rose-50 border border-rose-100 rounded-lg">
-        <h3 class="font-bold text-rose-800 mb-2">4. 卸載期 (Unmounting)</h3>
-        <p class="text-sm text-rose-700">
-          包含 <code>onBeforeUnmount</code> 與 <code>onUnmounted</code>。組件被移除，釋放內存資源。
-        </p>
-      </div>
-    </section>
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <!-- 詳細用法指南 -->
+      <section class="space-y-6 overflow-y-auto max-h-[80vh] pr-4 custom-scrollbar">
+        <!-- Setup 階段 -->
+        <div class="p-5 bg-slate-50 border-l-4 border-slate-400 rounded-r-lg">
+          <h3 class="font-bold text-slate-800 text-lg mb-2">1. setup() 階段</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            <strong>用法：</strong> 這是組合式 API 的起點。所有的響應式數據 (ref, reactive)
+            與計算屬性 (computed) 都在此定義。 <br /><strong>注意：</strong>
+            此時組件實例尚未建立，無法訪問 <code>this</code> (在組合式 API 中也不需要)。它取代了 Vue
+            2 的 <code>beforeCreate</code> 與 <code>created</code>。
+          </p>
+        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- 練習說明 -->
-      <section class="space-y-4 text-slate-600">
-        <h2 class="text-xl font-bold text-slate-800">為什麼要學生命週期？</h2>
-        <p>開發 Vue 應用時，我們經常需要在特定時間點執行邏輯，例如：</p>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>API 請求：</strong> 通常放在 <code>onMounted</code>。</li>
-          <li><strong>DOM 操作：</strong> 必須在 <code>onMounted</code> 之後才能抓到元素。</li>
-          <li><strong>效能監控：</strong> 可以在 <code>onUpdated</code> 觀察渲染頻率。</li>
-          <li><strong>清理資源：</strong> 在 <code>onUnmounted</code> 清除 <code>setInterval</code>，避免記憶體洩漏。</li>
-        </ul>
-        
-        <div class="mt-6 p-4 bg-slate-100 rounded-lg border-l-4 border-slate-500">
-          <p class="text-sm">
-            <strong>注意：</strong> 在 Vue 3 組合式 API 中，<code>beforeCreate</code> 和 <code>created</code> 被 <code>setup()</code> 取代了，不需要特別的掛鉤。
+        <!-- 掛載階段 -->
+        <div class="p-5 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg">
+          <h3 class="font-bold text-emerald-800 text-lg mb-2">2. 掛載階段 (onMounted)</h3>
+          <p class="text-sm text-emerald-700 leading-relaxed mb-2">
+            <strong>用法：</strong> 這是最常用的掛鉤。用於發送 <strong>API 請求</strong>、操作
+            <strong>DOM 元素</strong> (例如初始化圖表庫如 ECharts、Swiper)、設定定時器。
+          </p>
+          <p class="text-xs text-emerald-600 bg-white/50 p-2 rounded">
+            💡 <strong>實戰技巧：</strong> 如果你需要確保子組件也掛載完畢，可以在此執行邏輯。
+          </p>
+        </div>
+
+        <!-- 更新階段 -->
+        <div class="p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+          <h3 class="font-bold text-amber-800 text-lg mb-2">3. 更新階段 (onUpdated)</h3>
+          <p class="text-sm text-amber-700 leading-relaxed">
+            <strong>用法：</strong> 在響應式數據導致 DOM
+            重新渲染後調用。通常用於在更新後重新計算位置或測量 DOM 尺寸。 <br /><strong
+              >⚠️ 警告：</strong
+            >
+            <strong>絕對不要</strong>在此處修改狀態數據，否則會導致無限更新迴圈。
+          </p>
+        </div>
+
+        <!-- 卸載階段 -->
+        <div class="p-5 bg-rose-50 border-l-4 border-rose-500 rounded-r-lg">
+          <h3 class="font-bold text-rose-800 text-lg mb-2">4. 卸載階段 (onUnmounted)</h3>
+          <p class="text-sm text-rose-700 leading-relaxed">
+            <strong>用法：</strong> 資源清理的黃金時機。用於
+            <strong>清除 setInterval/setTimeout</strong>、<strong>取消 API 訂閱</strong>、<strong
+              >移除原生事件監聽器</strong
+            >
+            (window.addEventListener)。 <br /><strong>💡 目的：</strong>
+            防止「記憶體洩漏」，確保組件消失後不會繼續佔用電腦效能。
           </p>
         </div>
       </section>
 
-      <!-- 實作區塊 -->
-      <section class="space-y-6">
+      <!-- 實作測試與紀錄 -->
+      <section class="flex flex-col gap-6">
         <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-slate-800">實作測試區</h3>
-            <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded font-mono">Count: {{ count }}</span>
+            <h3 class="text-lg font-bold text-slate-800">生命週期互動區</h3>
+            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full font-bold"
+              >Count: {{ count }}</span
+            >
           </div>
-          <button 
-            @click="count++" 
-            class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-bold transition-all shadow-md active:translate-y-0.5"
+          <button
+            @click="count++"
+            class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold transition-all shadow-lg active:scale-95"
           >
-            點我變更數據 (觸發 Update 掛鉤)
+            點我更新數據 (觸發 Update 掛鉤)
           </button>
+          <p class="mt-4 text-xs text-slate-400 text-center italic">
+            觀察控制台 (F12) 的輸出順序與說明
+          </p>
         </div>
 
-        <div class="p-6 bg-slate-900 rounded-xl shadow-inner min-h-[250px] relative">
-          <h3 class="text-emerald-400 font-mono text-xs mb-4 flex justify-between">
-            <span># 生命週期即時紀錄</span>
-            <button @click="logs = []" class="hover:text-white underline">清空</button>
+        <div class="flex-1 p-6 bg-slate-900 rounded-2xl shadow-2xl relative min-h-[400px]">
+          <h3
+            class="text-emerald-400 font-mono text-xs mb-6 flex justify-between items-center border-b border-slate-800 pb-2"
+          >
+            <span>生命週期執行紀錄</span>
+            <button @click="logs = []" class="text-slate-500 hover:text-white transition-colors">
+              CLEAR
+            </button>
           </h3>
-          <div class="space-y-2 font-mono text-[13px] h-[200px] overflow-y-auto pr-2 custom-scrollbar">
-            <div v-for="(log, index) in logs" :key="index" class="text-emerald-200 border-b border-slate-800 pb-1">
-              {{ log }}
+          <div
+            class="space-y-3 font-mono text-[13px] overflow-y-auto max-h-[350px] custom-scrollbar pr-4"
+          >
+            <div
+              v-for="(log, index) in logs"
+              :key="index"
+              class="flex gap-3 text-emerald-200 group"
+            >
+              <span class="text-slate-600 whitespace-nowrap">[{{ index }}]</span>
+              <span class="group-hover:text-white transition-colors">{{ log }}</span>
+            </div>
+            <div
+              v-if="logs.length === 0"
+              class="text-slate-600 italic text-center py-20 animate-pulse"
+            >
+              [SYSTEM] 正在等待掛載掛鉤執行...
             </div>
           </div>
         </div>
@@ -117,20 +144,31 @@ onUnmounted(() => addLog('onUnmounted (組件卸載後：組件已完全移除)'
 
 <style scoped>
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #cbd5e1;
   border-radius: 10px;
 }
-.lifecycle-view {
-  animation: fadeIn 0.4s ease-out;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
+
+.lifecycle-view {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

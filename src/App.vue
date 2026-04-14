@@ -31,9 +31,6 @@ const toggleSidebar = () => {
           <RouterLink to="/">Vue<span>Practice</span></RouterLink>
         </div>
       </div>
-      <div class="actions">
-        <button class="btn-primary">登入</button>
-      </div>
     </div>
   </header>
 
@@ -52,6 +49,10 @@ const toggleSidebar = () => {
         <RouterLink to="/lifecycle" class="sidebar-item">
           <i class="icon">🔄</i>
           <span class="label">生命週期</span>
+        </RouterLink>
+        <RouterLink to="/reactivity" class="sidebar-item">
+          <i class="icon">🧪</i>
+          <span class="label">響應式 API</span>
         </RouterLink>
       </nav>
     </aside>
