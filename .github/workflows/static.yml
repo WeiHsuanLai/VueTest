@@ -1,43 +1,56 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# GitHub Actions 專用：自動化部署 Vite + Vue 3 至 GitHub Pages
+name: Deploy Vue Project to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # 當 main 分支有程式碼推送時觸發
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # 允許從 Actions 頁籤手動觸發
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 設定 GITHUB_TOKEN 的權限，以允許部署到 GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# 限制同一時間僅有一個部署工作，避免競合
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: ⬇️ 檢出原始碼 (Checkout)
         uses: actions/checkout@v4
-      - name: Setup Pages
+
+      - name: ⚙️ 設定 Node.js 環境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 安裝專案依賴 (Install Dependencies)
+        run: npm install
+
+      - name: 🏗️ 執行編譯建置 (Build)
+        run: npm run build
+
+      - name: 📁 設定 GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: 📤 上傳編譯成品 (Upload Artifact)
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
+          # Vite 預設的編譯輸出資料夾為 dist
+          path: './dist'
+
+      - name: 🚀 部署至 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
