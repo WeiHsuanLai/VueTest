@@ -54,6 +54,10 @@ const toggleSidebar = () => {
           <i class="icon">🧪</i>
           <span class="label">響應式 API</span>
         </RouterLink>
+        <RouterLink to="/closure" class="sidebar-item">
+          <i class="icon">📦</i>
+          <span class="label">JS 閉包</span>
+        </RouterLink>
       </nav>
     </aside>
 

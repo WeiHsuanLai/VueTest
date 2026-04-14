@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'reactivity',
       component: () => import('../views/ReactivityView.vue'),
     },
+    {
+      path: '/closure',
+      name: 'closure',
+      component: () => import('../views/ClosureView.vue'),
+    },
   ],
 })
 
