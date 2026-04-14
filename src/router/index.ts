@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
+import EventModifiersView from '@/views/EventModifiersView.vue'
 
 const router = createRouter({
   // 使用 Web History 模式（網址不帶 # 符號）
@@ -15,38 +16,49 @@ const router = createRouter({
     {
       path: '/lifecycle',
       name: 'lifecycle',
-      component: () => import('../views/LifecycleView.vue'),
+      component: () => import('@/views/LifecycleView.vue'),
     },
     {
       path: '/reactivity',
       name: 'reactivity',
-      component: () => import('../views/ReactivityView.vue'),
+      component: () => import('@/views/ReactivityView.vue'),
     },
     {
       path: '/closure',
       name: 'closure',
-      component: () => import('../views/ClosureView.vue'),
+      component: () => import('@/views/ClosureView.vue'),
     },
     {
       path: '/communication',
       name: 'communication',
-      component: () => import('../views/CommunicationView.vue'),
+      component: () => import('@/views/CommunicationView.vue'),
     },
     {
       path: '/advanced-communication',
       name: 'advanced-communication',
-      component: () => import('../views/AdvancedCommunicationView.vue'),
+      component: () => import('@/views/AdvancedCommunicationView.vue'),
     },
     {
       path: '/global-communication',
       name: 'global-communication',
-      component: () => import('../views/GlobalCommunicationView.vue'),
+      component: () => import('@/views/GlobalCommunicationView.vue'),
     },
     {
       path: '/accessor',
       name: 'accessor',
-      component: () => import('../views/AccessorView.vue'),
+      component: () => import('@/views/AccessorView.vue'),
     },
+    {
+      path: '/event-modifiers',
+      name: 'event-modifiers',
+      component: EventModifiersView,
+    },
+    // 捕獲所有未匹配的路由
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: HomeView
+    }
   ],
 })
 

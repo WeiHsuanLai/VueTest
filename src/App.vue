@@ -74,6 +74,10 @@ const toggleSidebar = () => {
           <i class="icon">⚙️</i>
           <span class="label">Get / Set 存取器</span>
         </RouterLink>
+        <RouterLink to="/event-modifiers" class="sidebar-item">
+          <i class="icon">⚡</i>
+          <span class="label">事件修飾符</span>
+        </RouterLink>
       </nav>
     </aside>
 
@@ -170,9 +174,24 @@ const toggleSidebar = () => {
   bottom: 0;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: auto; /* 啟用垂直滾動 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 900;
+}
+
+/* 自定義側邊欄滾動條 (美化) */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
 }
 
 /* 完全收合：寬度歸零並向左位移 */

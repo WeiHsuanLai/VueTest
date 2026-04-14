@@ -25,7 +25,9 @@ const fullName = computed({
   // 寫入時執行 (例如：fullName.value = '李大華')
   set(newValue: string) {
     // 簡單的拆分邏輯：假設第一個字是姓，其餘是名
+    // substring 方法用於提取字串的一部分，這裡將 newValue 的第一個字作為姓，剩餘部分作為名
     firstName.value = newValue.substring(0, 1)
+    // substring(1) 從索引 1 開始提取字串，直到結尾，這裡將 newValue 的剩餘部分作為名
     lastName.value = newValue.substring(1)
   },
 })
@@ -35,8 +37,8 @@ const updateFullName = () => {
 }
 
 const resetData = () => {
-  firstName.value = '張'
-  lastName.value = '君雅'
+  firstName.value = '張' //AccessorView.vue
+  lastName.value = '君雅' //AccessorView.vue
 }
 </script>
 
