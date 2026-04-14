@@ -42,6 +42,11 @@ const router = createRouter({
       name: 'global-communication',
       component: () => import('../views/GlobalCommunicationView.vue'),
     },
+    {
+      path: '/accessor',
+      name: 'accessor',
+      component: () => import('../views/AccessorView.vue'),
+    },
   ],
 })
 

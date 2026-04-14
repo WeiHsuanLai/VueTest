@@ -70,6 +70,10 @@ const toggleSidebar = () => {
           <i class="icon">🌐</i>
           <span class="label">全域與隔代通信</span>
         </RouterLink>
+        <RouterLink to="/accessor" class="sidebar-item">
+          <i class="icon">⚙️</i>
+          <span class="label">Get / Set 存取器</span>
+        </RouterLink>
       </nav>
     </aside>
 
