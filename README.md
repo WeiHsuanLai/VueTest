@@ -1,48 +1,56 @@
-# .
+# Vue 3 專案範本
 
-This template should help get you started developing with Vue 3 in Vite.
+這是一個乾淨、高效的 Vue 3 專案基礎範本，使用了 Vite 作為建構工具。
 
-## Recommended IDE Setup
+## 🚀 技術棧
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Vue 3**: 組合式 API (Composition API)
+- **Vite**: 極速的前端開發工具
+- **TypeScript**: 強型別的 JavaScript
+- **Pinia**: 現代化 Vue 狀態管理
+- **Vue Router**: 官方路由管理
+- **ESLint & Prettier**: 程式碼風格檢查與自動格式化
 
-## Recommended Browser Setup
+## 📂 目錄結構
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+```text
+src/
+├── assets/          # 靜態資源 (CSS, 圖片)
+├── components/      # 共用元件 (目前已清空，待新增)
+├── router/          # 路由配置 (含中文註解)
+├── stores/          # Pinia 狀態管理 (目前已清空)
+├── views/           # 頁面級組件 (Home, About)
+├── App.vue          # 主進入點組件
+└── main.ts          # 專案初始化進入點
+```
 
-## Type Support for `.vue` Imports in TS
+## 🛠️ 開發指南
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
+### 安裝依賴
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
+### 啟動開發伺服器
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
+### 建構生產版本
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
+### 程式碼檢查與格式化
 ```sh
+# 執行 ESLint 檢查
 npm run lint
+
+# 執行程式碼自動格式化
+npm run format
 ```
+
+## 📝 備註
+
+- 專案程式碼中已加入詳細的 **繁體中文註解**，方便開發者快速上手。
+- 已配置 `.gitignore` 自動忽略 `GEMINI.md` 等非必要檔案。
