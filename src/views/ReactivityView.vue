@@ -715,7 +715,7 @@ const copyToClipboard = async (text: string): Promise<void> => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
 @reference "../assets/main.css";
 
 .code-pre {
