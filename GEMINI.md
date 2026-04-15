@@ -7,6 +7,7 @@
 - **框架**: Vue 3 (Composition API) + TypeScript + Vite
 - **狀態管理**: Pinia (已初始化，目前無資料夾內容)
 - **路由管理**: Vue Router (已配置並加入繁體中文註解)
+- **文件系統**: VitePress (已配置並加入基礎範例)
 - **清理工作**: 已移除官方範例（HelloWorld, TheWelcome 等）及相關 Assets。
 - **程式碼風格**: 加入了詳細的繁體中文註解。
 - **Git 配置**: `.gitignore` 已排除 `GEMINI.md`。

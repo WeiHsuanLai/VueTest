@@ -62,10 +62,10 @@ onUnmounted(() => addLog('onUnmounted (卸載後)'))
           <p class="text-xs text-emerald-600 bg-white/50 p-2 rounded">
             <strong>實戰技巧：</strong> 如果你需要確保子組件也掛載完畢，可以在此執行邏輯。
           </p>
-          </div>
+        </div>
 
-          <!-- 更新階段 -->
-          <div class="p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+        <!-- 更新階段 -->
+        <div class="p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
           <h3 class="font-bold text-amber-800 text-lg mb-2">3. 更新階段 (onUpdated)</h3>
           <p class="text-sm text-amber-700 leading-relaxed">
             <strong>用法：</strong> 在響應式數據導致 DOM
@@ -74,10 +74,10 @@ onUnmounted(() => addLog('onUnmounted (卸載後)'))
             >
             <strong>絕對不要</strong>在此處修改狀態數據，否則會導致無限更新迴圈。
           </p>
-          </div>
+        </div>
 
-          <!-- 卸載階段 -->
-          <div class="p-5 bg-rose-50 border-l-4 border-rose-500 rounded-r-lg">
+        <!-- 卸載階段 -->
+        <div class="p-5 bg-rose-50 border-l-4 border-rose-500 rounded-r-lg">
           <h3 class="font-bold text-rose-800 text-lg mb-2">4. 卸載階段 (onUnmounted)</h3>
           <p class="text-sm text-rose-700 leading-relaxed">
             <strong>用法：</strong> 資源清理的黃金時機。用於
@@ -143,33 +143,4 @@ onUnmounted(() => addLog('onUnmounted (卸載後)'))
   </div>
 </template>
 
-<style scoped>
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-.lifecycle-view {
-  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
+<style scoped></style>
