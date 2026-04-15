@@ -30,7 +30,7 @@ const handleReset = () => {
       <section class="space-y-6">
         <div class="p-8 bg-slate-100 rounded-2xl border-2 border-slate-200">
           <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-            👨‍👩‍👧‍👦 父組件 (Parent)
+            父組件 (Parent)
           </h3>
           <div class="space-y-4 mb-6">
             <div>
@@ -80,7 +80,7 @@ const handleReset = () => {
       <!-- 子組件區域 -->
       <section class="space-y-6">
         <h3 class="text-lg font-bold text-slate-500 flex items-center gap-2">
-          👶 子組件 (Children)
+          子組件 (Children)
         </h3>
 
         <!-- 子組件 A: 接收 Props -->
@@ -90,7 +90,7 @@ const handleReset = () => {
         <ChildEmits @change-name="handleNameChange" @reset-count="handleReset" />
 
         <div class="p-4 bg-white border rounded-xl text-sm shadow-sm">
-          <h4 class="font-bold text-slate-800 mb-2">💡 學習重點：</h4>
+          <h4 class="font-bold text-slate-800 mb-2">學習重點：</h4>
           <ul class="list-disc pl-5 space-y-1 text-slate-600">
             <li><strong>:prop="variable"</strong> 是 v-bind 的縮寫。</li>
             <li><strong>@event="method"</strong> 是 v-on 的縮寫。</li>

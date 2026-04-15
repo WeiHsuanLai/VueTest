@@ -9,7 +9,7 @@ const attrs = useAttrs()
 <template>
   <div class="p-6 bg-rose-50 border border-rose-200 rounded-2xl shadow-sm">
     <h4 class="font-bold text-rose-800 mb-3 flex items-center gap-2">
-      👧 孫子組件 (DeepChild)
+      孫子組件 (DeepChild)
     </h4>
     <div class="space-y-2 text-sm text-rose-700 font-mono">
       <p>來自祖父的資料: <span class="font-bold underline">{{ attrs.msg }}</span></p>

@@ -75,7 +75,7 @@ const resetData = () => {
       <section class="space-y-6">
         <div class="p-8 bg-white rounded-2xl border shadow-sm">
           <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
-            🧪 實戰：可寫入計算屬性
+            實戰：可寫入計算屬性
           </h3>
 
           <div class="space-y-4">
@@ -128,7 +128,7 @@ const resetData = () => {
                 @click="resetData"
                 class="flex-1 py-2 bg-slate-200 text-slate-700 rounded-lg font-bold shadow-md hover:bg-slate-300 active:scale-95 transition-all"
               >
-                🔄 重置資料
+                重置資料
               </button>
             </div>
           </div>

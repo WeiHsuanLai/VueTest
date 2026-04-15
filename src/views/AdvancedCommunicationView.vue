@@ -30,19 +30,19 @@ const callChildMethod = () => {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- 父組件操作區 -->
       <section class="p-8 bg-slate-50 border rounded-2xl shadow-sm">
-        <h3 class="font-bold text-slate-700 mb-6">👨‍💻 父組件操作台</h3>
+        <h3 class="font-bold text-slate-700 mb-6">父組件操作台</h3>
         <div class="flex flex-col gap-3">
           <button 
             @click="getChildData" 
             class="px-4 py-3 bg-indigo-500 text-white rounded-xl shadow-md hover:bg-indigo-600 transition-all active:scale-95 text-left"
           >
-            🔍 獲取子組件資料 (Ref 讀取)
+            獲取子組件資料 (Ref 讀取)
           </button>
           <button 
             @click="callChildMethod" 
             class="px-4 py-3 bg-emerald-500 text-white rounded-xl shadow-md hover:bg-emerald-600 transition-all active:scale-95 text-left"
           >
-            ⚡ 呼叫子組件方法 (Ref 執行)
+            呼叫子組件方法 (Ref 執行)
           </button>
         </div>
         
@@ -61,7 +61,7 @@ const callChildMethod = () => {
         <ChildRef ref="childRef" />
         
         <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs mt-6 italic leading-relaxed">
-          <strong>⚠️ 關於 $parent：</strong> <br>
+          <strong>關於 $parent：</strong> <br>
           在子組件中可以使用 <code>getCurrentInstance()</code> 取得 <code>$parent</code> 來存取父組件實例。但這種做法會造成強耦合（組件必須放在特定父組件下才能運作），一般不建議在正式專案中使用。
         </div>
       </section>

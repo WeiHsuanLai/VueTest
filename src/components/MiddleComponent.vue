@@ -9,7 +9,7 @@ import DeepChild from './DeepChild.vue'
 <template>
   <div class="p-6 bg-slate-100 border-2 border-dashed border-slate-300 rounded-2xl">
     <h4 class="font-bold text-slate-500 mb-4 text-xs uppercase tracking-widest">
-      🔄 中轉組件 (MiddleComponent)
+      中轉組件 (MiddleComponent)
     </h4>
     <!-- 2. 將所有的屬性 ($attrs) 往下傳遞給孫子組件 -->
     <DeepChild v-bind="$attrs" />

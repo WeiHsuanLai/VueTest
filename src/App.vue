@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
-// 控制側邊欄是否收合 (預設為收合狀態)
-const isCollapsed = ref(true)
+// 控制側邊欄是否收合
+const isCollapsed = ref(false)
 
 // 切換收合狀態的函式
 const toggleSidebar = () => {
@@ -17,9 +17,9 @@ const toggleSidebar = () => {
     <div class="navbar-container">
       <div class="navbar-left">
         <!-- 三條線收合按鈕 -->
-        <button 
-          class="hamburger-btn" 
-          @click="toggleSidebar" 
+        <button
+          class="hamburger-btn"
+          @click="toggleSidebar"
           :class="{ 'is-active': !isCollapsed }"
           :title="isCollapsed ? '展開選單' : '收合選單'"
         >
@@ -40,42 +40,42 @@ const toggleSidebar = () => {
       <nav class="sidebar-nav">
         <div class="menu-label">主要選單</div>
         <RouterLink to="/" class="sidebar-item">
-          <i class="icon">🏠</i>
+          <i class="icon"></i>
           <span class="label">專案首頁</span>
         </RouterLink>
-        
+
         <div class="menu-label">學習主題</div>
         <!-- 生命週期現在移動到學習主題下 -->
         <RouterLink to="/lifecycle" class="sidebar-item">
-          <i class="icon">🔄</i>
+          <i class="icon"></i>
           <span class="label">生命週期</span>
         </RouterLink>
         <RouterLink to="/reactivity" class="sidebar-item">
-          <i class="icon">🧪</i>
+          <i class="icon"></i>
           <span class="label">響應式 API</span>
         </RouterLink>
         <RouterLink to="/closure" class="sidebar-item">
-          <i class="icon">📦</i>
+          <i class="icon"></i>
           <span class="label">JS 閉包</span>
         </RouterLink>
         <RouterLink to="/communication" class="sidebar-item">
-          <i class="icon">💬</i>
+          <i class="icon"></i>
           <span class="label">組件通信</span>
         </RouterLink>
         <RouterLink to="/advanced-communication" class="sidebar-item">
-          <i class="icon">🛰️</i>
+          <i class="icon"></i>
           <span class="label">進階組件通信</span>
         </RouterLink>
         <RouterLink to="/global-communication" class="sidebar-item">
-          <i class="icon">🌐</i>
+          <i class="icon"></i>
           <span class="label">全域與隔代通信</span>
         </RouterLink>
         <RouterLink to="/accessor" class="sidebar-item">
-          <i class="icon">⚙️</i>
+          <i class="icon"></i>
           <span class="label">Get / Set 存取器</span>
         </RouterLink>
         <RouterLink to="/event-modifiers" class="sidebar-item">
-          <i class="icon">⚡</i>
+          <i class="icon"></i>
           <span class="label">事件修飾符</span>
         </RouterLink>
       </nav>
@@ -174,9 +174,11 @@ const toggleSidebar = () => {
   bottom: 0;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto; /* 啟用垂直滾動 */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 900;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* 自定義側邊欄滾動條 (美化) */
@@ -194,11 +196,8 @@ const toggleSidebar = () => {
   background: #cbd5e1;
 }
 
-/* 完全收合：寬度歸零並向左位移 */
 .sidebar-collapsed .sidebar {
-  width: 0;
   transform: translateX(-100%);
-  border-right-width: 0;
 }
 
 .sidebar-nav {

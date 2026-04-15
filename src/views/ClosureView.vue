@@ -75,7 +75,7 @@ const handleIncrement = (index: number) => {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <section class="prose prose-slate max-w-none">
         <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-100">
-          <h2 class="text-xl font-bold text-indigo-800 mb-3">⚠️ 為什麼需要「橋樑」？</h2>
+          <h2 class="text-xl font-bold text-indigo-800 mb-3">為什麼需要「橋樑」？</h2>
           <p class="text-indigo-900 text-sm leading-relaxed">
             純 JavaScript 的閉包變數是<strong>「隱形」</strong>的。Vue 的監控系統看不到函數內部的
             <code>let count</code>。 <br /><br />
@@ -89,7 +89,7 @@ const handleIncrement = (index: number) => {
       <section class="space-y-6">
         <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
           <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-            🧪 閉包與 Vue 協作實驗室
+            閉包與 Vue 協作實驗室
           </h3>
           <div class="flex gap-2 mb-6">
             <input

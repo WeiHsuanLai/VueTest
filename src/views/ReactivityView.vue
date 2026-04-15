@@ -17,14 +17,14 @@ const updateReactive = () => {
   reactiveUser.age++
 }
 
-// ❌ 證明失敗：直接重新賦值
+// 證明失敗：直接重新賦值
 const failReassign = () => {
   console.warn('執行：trapUser = { ... }')
   trapUser = reactive({ name: '嘗試重新賦值', status: '已斷開響應' })
   alert('變數 trapUser 已指向新物件，但 Vue 模板仍監控著舊的 Proxy，所以畫面不會動！')
 }
 
-// ✅ 證明成功：使用 Object.assign 或修改屬性
+// 證明成功：使用 Object.assign 或修改屬性
 const successUpdate = () => {
   Object.assign(correctUser, { name: '正確更新', status: '響應正常' })
 }
@@ -58,7 +58,7 @@ const successUpdate = () => {
     <!-- 2. 核心實驗室：證明 reactive 重新賦值失效 -->
     <section class="p-8 bg-slate-900 rounded-2xl text-white shadow-2xl">
       <h2 class="text-2xl font-bold text-emerald-400 mb-6 flex items-center gap-3">
-        🧪 響應性陷阱實驗室 (The Reassignment Trap)
+        響應性陷阱實驗室 (The Reassignment Trap)
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -83,7 +83,7 @@ const successUpdate = () => {
             @click="failReassign"
             class="w-full py-3 bg-red-600 hover:bg-red-700 rounded-lg font-bold transition-all shadow-lg active:scale-95"
           >
-            ❌ 執行重新賦值 (trapUser = { ... })
+            執行重新賦值 (trapUser = { ... })
           </button>
           <p class="text-xs text-slate-500 italic">點擊後，你會發現上面的文字死都不會動。</p>
         </div>
@@ -111,14 +111,14 @@ const successUpdate = () => {
             @click="successUpdate"
             class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 rounded-lg font-bold transition-all shadow-lg active:scale-95"
           >
-            ✅ 正確更新 (Object.assign)
+            正確更新 (Object.assign)
           </button>
           <p class="text-xs text-slate-500 italic">點擊後，Vue 能成功攔截到物件內部的屬性變化。</p>
         </div>
       </div>
 
       <div class="mt-8 p-4 bg-white/5 rounded-lg border border-white/10">
-        <h4 class="text-emerald-400 font-bold mb-2">💡 結論</h4>
+        <h4 class="text-emerald-400 font-bold mb-2">結論</h4>
         <p class="text-sm text-slate-300 leading-relaxed">
           Vue 的 <code>reactive</code> 就像是一個<b>「被監視的盒子」</b>。 當你執行
           <code>Object.assign</code> 時，你是在往同一個盒子裡換內容； 但當你執行

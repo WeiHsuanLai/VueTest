@@ -10,11 +10,11 @@ const addLog = (msg: string) => {
 }
 
 // 事件處理函式
-const handleParentClick = () => addLog('🔔 觸發：父層容器事件')
-const handleChildClick = () => addLog('🔘 觸發：子層按鈕點擊')
-const handleLinkClick = () => addLog('🔗 觸發：超連結點擊 (頁面未跳轉)')
-const handleOnceClick = () => addLog('⚡ 觸發：一次性按鈕執行')
-const handleSelfClick = () => addLog('🎯 觸發：.self 容器本體事件')
+const handleParentClick = () => addLog('觸發：父層容器事件')
+const handleChildClick = () => addLog('觸發：子層按鈕點擊')
+const handleLinkClick = () => addLog('觸發：超連結點擊 (頁面未跳轉)')
+const handleOnceClick = () => addLog('觸發：一次性按鈕執行')
+const handleSelfClick = () => addLog('觸發：.self 容器本體事件')
 
 // 詳細技術文件資料
 const fullModifierDocs = [
@@ -89,7 +89,7 @@ const fullModifierDocs = [
       <div class="guide-panel">
         <section class="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm">
           <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-            📖 特性與作用全手冊
+            特性與作用全手冊
           </h3>
           <div class="grid grid-cols-1 gap-4">
             <div
@@ -151,7 +151,7 @@ const fullModifierDocs = [
 
           <!-- .stop & .prevent -->
           <div class="lab-card">
-            <h3 class="card-title">🛑 傳遞與行為攔截</h3>
+            <h3 class="card-title">傳遞與行為攔截</h3>
             <div class="space-y-4">
               <div @click="handleParentClick" class="outer-box">
                 <p class="box-label">父層容器 (@click)</p>
@@ -172,7 +172,7 @@ const fullModifierDocs = [
 
           <!-- .self & .once -->
           <div class="lab-card">
-            <h3 class="card-title">🎯 精確觸發與次數</h3>
+            <h3 class="card-title">精確觸發與次數</h3>
             <div class="space-y-4">
               <div @click.self="handleSelfClick" class="self-box">
                 <p class="box-label">點擊灰色背景才有效</p>
@@ -191,7 +191,7 @@ const fullModifierDocs = [
             </div>
             <div class="console-body custom-scrollbar">
               <div v-for="(log, index) in logs" :key="index" class="log-entry">
-                <span class="log-arrow">➜</span> {{ log }}
+                <span class="log-arrow">></span> {{ log }}
               </div>
               <div v-if="logs.length === 0" class="empty-msg">等待上方操作觸發...</div>
             </div>

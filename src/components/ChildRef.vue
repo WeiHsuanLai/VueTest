@@ -9,7 +9,7 @@ const showAlert = () => {
   alert('父組件成功呼叫了子組件的方法！')
 }
 
-// ⚠️ 存取父組件 (不推薦，僅作教學示範)
+// 存取父組件 (不推薦，僅作教學示範)
 const accessParent = () => {
   const instance = getCurrentInstance()
   // @ts-ignore - $parent 在 TS 中需要較複雜的型別定義
@@ -34,7 +34,7 @@ defineExpose({
       @click="accessParent" 
       class="text-xs px-3 py-2 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition-colors"
     >
-      🧪 點我：透過 $parent 探測父組件
+      點我：透過 $parent 探測父組件
     </button>
   </div>
 </template>
