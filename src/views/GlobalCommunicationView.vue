@@ -61,7 +61,7 @@ const resetAncestor = () => {
               <input
                 v-model="ancestorMsg"
                 type="text"
-                class="w-full px-4 py-2 border rounded-lg mb-4"
+                class="w-full px-4 py-2 border-2 border-slate-300 bg-white rounded-lg mb-4 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none text-slate-800 font-semibold shadow-sm transition-all"
               />
               <div class="flex items-center justify-between">
                 <span

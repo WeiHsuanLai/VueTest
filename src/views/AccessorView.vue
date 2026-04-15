@@ -87,7 +87,7 @@ const resetData = () => {
                 <input
                   v-model="firstName"
                   type="text"
-                  class="w-full px-3 py-2 border rounded-lg bg-slate-50"
+                  class="w-full px-3 py-2 border-2 border-slate-300 bg-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 font-semibold shadow-sm transition-all"
                 />
               </div>
               <div>
@@ -97,7 +97,7 @@ const resetData = () => {
                 <input
                   v-model="lastName"
                   type="text"
-                  class="w-full px-3 py-2 border rounded-lg bg-slate-50"
+                  class="w-full px-3 py-2 border-2 border-slate-300 bg-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 font-semibold shadow-sm transition-all"
                 />
               </div>
             </div>
