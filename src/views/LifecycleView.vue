@@ -32,7 +32,7 @@ onBeforeMount(() => addLog('onBeforeMount (掛載前)'))
 onMounted(() => addLog('onMounted (掛載後)'))
 onBeforeUpdate(() => addLog('onBeforeUpdate (更新前)', false))
 onUpdated(() => {
-  addLog('onUpdated (更新後 - 觸發自動捲動)', true)
+  addLog('onUpdated (更新後 - 觸發自動捲動)', false)
   // 聊天室自動捲動邏輯
   scrollToBottom()
 })
@@ -43,7 +43,7 @@ onUnmounted(() => addLog('onUnmounted (卸載後)'))
 const firstName = ref<string>('王')
 const lastName = ref<string>('小明')
 const fullName = computed<string>(() => {
-  addLog('computed (重新計算姓名)', true)
+  addLog('computed (重新計算姓名)', false)
   return `${firstName.value}${lastName.value}`
 })
 
