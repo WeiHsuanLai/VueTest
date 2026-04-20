@@ -17,33 +17,33 @@ const count = ref<number>(0)
 const logs = ref<string[]>([])
 const langMode = ref<'ts' | 'js'>('ts')
 
-const addLog = (hook: string, updateUi: boolean = true): void => {
+const addLog = (hook: string, description: string, updateUi: boolean = true): void => {
   const time = new Date().toLocaleTimeString()
-  const message = `[${time}] 觸發 ${hook}`
+  const message = `[${time}] ${hook} | ${description}`
   if (updateUi) {
     logs.value.unshift(message)
     if (logs.value.length > 25) logs.value.pop()
   }
-  console.log(`%c[Vue Debug]%c ${hook}`, 'color: #42b883; font-weight: bold', '')
+  console.log(`%c[Vue Debug]%c ${hook}: ${description}`, 'color: #42b883; font-weight: bold', '')
 }
 
 // 掛鉤實作
-onBeforeMount(() => addLog('onBeforeMount (掛載前)'))
-onMounted(() => addLog('onMounted (掛載後)'))
-onBeforeUpdate(() => addLog('onBeforeUpdate (更新前)', false))
+onBeforeMount(() => addLog('onBeforeMount', '組件即將掛載，此時 DOM 尚未生成。'))
+onMounted(() => addLog('onMounted', '組件已掛載，適合進行 API 請求、DOM 操作或監聽器設定。'))
+onBeforeUpdate(() => addLog('onBeforeUpdate', '數據已變更，但 DOM 尚未重新渲染。', false))
 onUpdated(() => {
-  addLog('onUpdated (更新後 - 觸發自動捲動)', false)
+  addLog('onUpdated', 'DOM 已更新完畢，適合處理依賴新 DOM 狀態的邏輯（如捲動）。', false)
   // 聊天室自動捲動邏輯
   scrollToBottom()
 })
-onBeforeUnmount(() => addLog('onBeforeUnmount (卸載前)'))
-onUnmounted(() => addLog('onUnmounted (卸載後)'))
+onBeforeUnmount(() => addLog('onBeforeUnmount', '組件即將卸載，最後一次執行清理邏輯的機會。'))
+onUnmounted(() => addLog('onUnmounted', '組件已卸載，應在此清除所有計時器與全域監聽器。'))
 
 // --- 2. Computed 姓名案例 ---
 const firstName = ref<string>('王')
 const lastName = ref<string>('小明')
 const fullName = computed<string>(() => {
-  addLog('computed (重新計算姓名)', false)
+  addLog('computed', '根據響應式數據計算衍生值，具有快取特性，僅在依賴項變更時重新計算。', false)
   return `${firstName.value}${lastName.value}`
 })
 
@@ -51,7 +51,7 @@ const fullName = computed<string>(() => {
 const searchQuery = ref<string>('')
 const searchResult = ref<string>('等待輸入...')
 watch(searchQuery, (newValue, oldValue) => {
-  addLog(`watch (搜尋變更: "${oldValue}" -> "${newValue}")`, true)
+  addLog('watch', `監控數據變更（"${oldValue}" -> "${newValue}"），適合執行非同步操作。`, true)
   searchResult.value = '正在搜尋中...'
   setTimeout(() => {
     if (newValue === searchQuery.value) {
